@@ -1,11 +1,11 @@
-version: 3.8
+version: "3.8"
 
 services:
   mongodb:
     image: mongo:latest
     container_name: mongo_database
     ports:
-      - '27017:27017'
+      - "27017:27017"
 
 
 
@@ -15,7 +15,7 @@ services:
       dockerfile: Dockerfile
     container_name: node_webapo_container
     ports:
-        - '3000:3000'
+        - "3000:3000"
     depends_on:
         - mongodb
     
