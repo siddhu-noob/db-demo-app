@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-deploy-app
+spec:
+  replicas: 1
+selector:
+  matchLabels:
+    app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+        - name: node-container-app
+          image: arcka7/hub-node-webapp:test3
+          env:
+            - name: MONGO_HOST
+              valueFrom: ## Where does the value comes from?
+                configMapKeyRef: ## Use the mapping of mongo-config
+                  name: mongo-config
+                  key: MONGO_HOST
+            - name: MONGO_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-config
+                  key: MONGO_PORT
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-service-app
+spec:
+  selector:
+    app: node-app
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 3000
+  type: NodePort
