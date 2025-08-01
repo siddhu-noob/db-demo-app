@@ -17,7 +17,7 @@ spec:
             image: arcka7/hub-node-webapp:test1
             ports:
              - containerPort: 3000
-          - name: mongo-db-container
+          - name: mongodb
             image: mongo:latest 
             ports:
              - containerPort: 27017
