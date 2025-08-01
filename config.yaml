@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-config
+spec:
+  data:
+    MONGO_HOST: "mongo-service-app"
+    MONGO_PORT: "27017"
