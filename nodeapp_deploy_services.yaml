@@ -4,9 +4,9 @@ metadata:
   name: node-deploy-app
 spec:
   replicas: 1
-selector:
-  matchLabels:
-    app: node-app
+  selector:
+    matchLabels:
+      app: node-app
   template:
     metadata:
       labels:
@@ -16,8 +16,9 @@ selector:
         - name: node-container-app
           image: arcka7/hub-node-webapp:test3
           env:
+          ## Get the value of mongo host and port from ConfigMap, name mongo-config, using the key MONGO_HOST and MONGO_PORT
             - name: MONGO_HOST
-              valueFrom: ## Where does the value comes from?
+              valueFrom: 
                 configMapKeyRef: ## Use the mapping of mongo-config
                   name: mongo-config
                   key: MONGO_HOST
