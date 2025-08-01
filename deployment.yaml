@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-webapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-webapp-tag
+  template:
+    metadata:
+      labels:
+        app: node-webapp-tag
+      spec:
+        containers:
+          - name: node-webapp-container
+            image: arcka7/hub-node-webapp:test1
+            ports:
+             - containerPort: 3000
+          - name: mongo-db-container
+            image: mongo:latest 
+            ports:
+             - containerPort: 27017
