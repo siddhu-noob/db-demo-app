@@ -11,8 +11,8 @@ spec:
     metadata:
       labels:
         app: node-webapp-tag
-      spec:
-        containers:
+    spec:
+       containers:
           - name: node-webapp-container
             image: arcka7/hub-node-webapp:test1
             ports:
